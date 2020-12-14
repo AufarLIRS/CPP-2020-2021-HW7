@@ -4,8 +4,8 @@
 
 class Counted{
 
-    unsigned int id;
-    static std::set<unsigned int> used_id;
+    int id;
+    static std::set<int> used_id;
 
 
     static int generate_id();
@@ -25,22 +25,5 @@ public:
 };
 
 
-
-//class Counted {
-
-//    int id;
-//    static int next_id;
-
-//public:
-
-//    Counted();
-
-//    Counted(const Counted& orig);
-
-//    int get_id();
-
-//    Counted& operator=(const Counted& orig);
-
-//};
 
 #endif // COUNTED_H

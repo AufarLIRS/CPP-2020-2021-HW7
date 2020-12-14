@@ -16,7 +16,7 @@ int Counted::get_id()
 
 int Counted::generate_id()
 {
-    static unsigned int id = 0;
+    static unsigned int id = 1;
 
     while(Counted::is_used(id))
     {
