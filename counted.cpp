@@ -19,13 +19,38 @@ Counted::Counted()
 {
   set_id();
 }
-Counted::Counted(const Counted&)
+Counted::Counted(const Counted& counted)
 {
-  set_id();
+  /*
+   * if counted is not this
+   * then copy to new object with new id_
+   * else make new object
+   * (which means set_id())
+   */
+  if (&counted != this)
+  {
+    set_id();
+  }
+  else
+  {
+    set_id();
+  }
 }
-Counted& Counted::operator=(const Counted&)
+Counted& Counted::operator=(const Counted& counted)
 {
-  return *this;
+  /*
+   * if counted is not this
+   * then copy to object with new id_
+   * else return self reference
+   */
+  if (&counted != this)
+  {
+    return *this;
+  }
+  else
+  {
+    return *this;
+  }
 }
 Counted::~Counted()
 {
