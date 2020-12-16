@@ -3,18 +3,18 @@
 
 void Counted::set_id()
 {
-  std::vector<Counted*>::iterator it = std::find(counteds_.begin(), counteds_.end(), nullptr);
-  id_ = std::distance(counteds_.begin(), it) + 1;
-  if (it == counteds_.end())
+  std::vector<bool>::iterator it = std::find(ids_.begin(), ids_.end(), false);
+  id_ = std::distance(ids_.begin(), it) + 1;
+  if (it == ids_.end())
   {
-    counteds_.push_back(this);
+    ids_.push_back(true);
   }
   else
   {
-    counteds_.at(id_ - 1) = this;
+    ids_.at(id_ - 1) = true;
   }
 }
-std::vector<Counted*> Counted::counteds_ = std::vector<Counted*>();
+std::vector<bool> Counted::ids_ = std::vector<bool>();
 Counted::Counted()
 {
   set_id();
@@ -29,7 +29,18 @@ Counted& Counted::operator=(const Counted&)
 }
 Counted::~Counted()
 {
-  counteds_.at(id_ - 1) = nullptr;
+  if ((int)ids_.size() == id_)
+  {
+    ids_.pop_back();
+  }
+  else
+  {
+    ids_.at(id_ - 1) = false;
+  }
+  while (!ids_.back())
+  {
+    ids_.pop_back();
+  }
 }
 int Counted::get_id()
 {

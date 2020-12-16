@@ -6,7 +6,7 @@
 class Counted
 {
 private:
-  static std::vector<Counted*> counteds_;
+  static std::vector<bool> ids_;
   int id_ = 0;
   void set_id();
 
