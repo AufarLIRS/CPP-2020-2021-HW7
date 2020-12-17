@@ -1,9 +1,12 @@
 #ifndef COUNTED_H
 #define COUNTED_H
+#include <vector>
+#include <iostream>
 
 class Counted
 {
   int id;
+  static std::vector<int> freeId;
   static int count;
 
 public:
