@@ -6,9 +6,11 @@
 class Counted
 {
 private:
-  static std::vector<Counted*> entities;
-  int Id = 0;
+  static std::vector<int> used_id;
+  int Id;
+  void SetId(int number);
   static int Number;
+  static int LastNumber;
 
 public:
   int GetId();
