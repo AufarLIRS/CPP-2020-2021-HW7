@@ -1,12 +1,28 @@
 #ifndef COUNTED_H
 #define COUNTED_H
+#include <iostream>
 #include <set>
 
-class Counted{
+using namespace std;
+
+class Counted{  
+
+    friend std::ostream& operator<<(std::ostream& out, const Counted& count);
+
+public:
+    Counted();
+
+    Counted(const Counted& source);
+
+    Counted& operator=(const Counted& source);
+
+    ~Counted();
+
+private:
 
     int id;
-    static std::set<int> used_id;
 
+    static set<int> used_id;
 
     static int generate_id();
 
@@ -16,12 +32,6 @@ class Counted{
 
     static bool is_used(int id);
 
-public:
-    explicit Counted();
-
-    int get_id();
-
-    ~Counted();
 };
 
 

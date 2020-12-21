@@ -7,10 +7,16 @@ using namespace std;
 int main()
 {
     Counted a;
-    cout << a.get_id() << endl;
+    cout << a << endl;
 
     Counted b;
-    cout << b.get_id() << endl;
+    cout << b << endl;
+
+    Counted c(b);
+    cout << c << endl;
+
+    Counted d = c;
+    cout << d << endl;
 
     return 0;
 }
