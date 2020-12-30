@@ -1,9 +1,17 @@
 #include <iostream>
-
-using namespace std;
+#include "counted.h"
 
 int main()
 {
-    cout << "Hello World!" << endl;
-    return 0;
+    Counted a;
+    Counted b;
+    for (int i = 0; i < 3; i++)
+    {
+        Counted d;
+    }
+    Counted copy = a;
+    std::cout << a.getID() << std::endl;
+    std::cout << b.getID() << std::endl;
+    std::cout << copy.getID() << std::endl;
+    return 1;
 }
