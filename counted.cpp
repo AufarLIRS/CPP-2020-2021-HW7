@@ -6,7 +6,7 @@ std::vector<int> counted::used_id;
 
 int counted::getid()
 {
-return id;
+  return id;
 }
 
 void counted::SetId(int number)

@@ -1,8 +1,7 @@
 #ifndef COUNTED_H
 #define COUNTED_H
-#include<string>
-#include<vector>
-
+#include <string>
+#include <vector>
 
 class counted
 {
@@ -15,10 +14,10 @@ private:
 
 public:
   int getid();
-    counted();
+  counted();
   counted(const counted&);
   counted& operator=(const counted&);
   ~counted();
 };
 
-#endif // COUNTED_H
+#endif  // COUNTED_H
