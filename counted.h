@@ -15,7 +15,7 @@ public:
   Counted();
   ~Counted();
   Counted(const Counted&);
-  Counted& operator=(const Counted&) = delete;  //так как противоречит условию уникальности
+  Counted& operator=(const Counted&);  //так как противоречит условию уникальности
 };
 
 #endif  // COUNTED_H
