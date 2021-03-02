@@ -1,21 +1,23 @@
 #ifndef COUNTED_H
 #define COUNTED_H
-#include <iostream>
-#include <set>
 
+#include <vector>
 class Counted
 {
-  int ID;
-  std::set<int> DeletedID;
+  int id;
   static int count;
-  int setID();
+  static int max_count;
+  static std::vector<int> vecOfDelIDs;
+  void set_id(int count);
 
 public:
-  int getID();
+  unsigned int getId();
   Counted();
   ~Counted();
+  Counted& operator=(const Counted&);
   Counted(const Counted&);
-  Counted& operator=(const Counted&);  //так как противоречит условию уникальности
+  Counted& operator=(Counted&&) = delete;
+  Counted(Counted&&) = delete;
 };
 
 #endif  // COUNTED_H

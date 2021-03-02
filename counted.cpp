@@ -1,43 +1,58 @@
 #include "counted.h"
 
 int Counted::count;
+int Counted::max_count;
+std::vector<int> Counted::vecOfDelIDs;
 
-int Counted::getID()
+void Counted::set_id(int count)
 {
-  return ID;
+  if (count != max_count)
+  {
+    unsigned int vec_size = vecOfDelIDs.size();
+    unsigned int i = 0;
+    while (i < vec_size)
+    {
+      if (vecOfDelIDs[i] != -1)
+      {
+        id = vecOfDelIDs[i];
+        vecOfDelIDs[i] = -1;
+        break;
+      }
+      i++;
+    }
+  }
 }
-int Counted::setID()
+
+unsigned int Counted::getId()
 {
-  if (DeletedID.empty())
-  {
-    count++;
-    return count;
-  }
-  else
-  {
-    count++;
-    int deleted_id = *DeletedID.begin();
-    DeletedID.erase(0);
-    return deleted_id;
-  }
+  return id;
 }
+
 Counted::Counted()
 {
-  ID = setID();
-}
-Counted::~Counted()
-{
-  if (ID == count)
-  {
-    count--;
-    return;
-  }
-  count--;
-  DeletedID.insert(ID);
+  count++;
+  max_count++;
+  id = count;
+  set_id(count);
 }
 
-Counted::Counted(const Counted& original)
+Counted::~Counted()
 {
-  this->count = original.count;
-  ID = setID();
+  vecOfDelIDs.push_back(id);
+  count--;
+}
+
+Counted& Counted::operator=(const Counted& next)
+{
+  if (this == &next)
+    return *this;
+  count = next.count;
+  set_id(count);
+  return *this;
+}
+
+Counted::Counted(const Counted& next)
+{
+  count = next.count;
+  set_id(count);
 }
